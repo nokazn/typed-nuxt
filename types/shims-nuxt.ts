@@ -5,8 +5,8 @@ import {
   SFCDispatch
 } from 'vuex'
 
-declare module 'vue/types/vue' {
-  interface Vue {
+declare module '@nuxt/types/app' {
+  interface NuxtAppOptions {
     $state: RootState
     $getters: RootGetters
     $commit: SFCCommit
