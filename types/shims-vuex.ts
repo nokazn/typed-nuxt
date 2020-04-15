@@ -1,4 +1,6 @@
 import 'vuex'
+import { IncomingMessage, ServerResponse } from 'http'
+
 import * as Root from '~/store/types'
 import * as Auth from '@/store/auth/types'
 import { ActionMethodMap, Merge } from '@/types'
@@ -89,22 +91,6 @@ declare module 'vuex' {
     rootGetters: RootGetters,
   }
 
-  type Actions<S, A extends ActionMethodMap, G = {}, M = {}> = {
-    [K in keyof A]: (
-      // this は仮の引数
-      this: Store<RootState>,
-      context: Context<S, G, M, A>,
-      payload: Parameters<A[K]>[0]
-    ) => ReturnType<A[K]>
-  }
-
-  // Dispatch に互換性がない
-  interface ExtendedStore extends Omit<Store<RootState>, 'commit' | 'dispatch'> {
-    getters: RootGetters
-    commit: ExtendedCommit<RootMutations>
-    dispatch: ExtendedDispatch<RootActions>
-  }
-
   // nuxtServerInit 用
   type StoreContext = {
     state: RootState,
@@ -113,5 +99,30 @@ declare module 'vuex' {
     dispatch: ExtendedDispatch<RootActions>
     rootState: RootState,
     rootGetters: RootGetters,
+  }
+
+  type Actions<S, A extends ActionMethodMap, G = {}, M = {}> = {
+    [K in keyof A]: (
+      // this は仮の引数
+      this: Store<RootState>,
+      context: Context<S, G, M, A>,
+      payload: Parameters<A[K]>[0]
+    ) => ReturnType<A[K]>
+  } & {
+    nuxtServerInit?: (
+      context: StoreContext,
+      payload: {
+        req: IncomingMessage,
+        res: ServerResponse,
+        error: Error,
+      },
+    ) => void | Promise<void>
+  }
+
+  // Dispatch に互換性がない
+  interface ExtendedStore extends Omit<Store<RootState>, 'commit' | 'dispatch'> {
+    getters: RootGetters
+    commit: ExtendedCommit<RootMutations>
+    dispatch: ExtendedDispatch<RootActions>
   }
 }
