@@ -98,9 +98,8 @@ declare module 'vuex' {
     ) => ReturnType<A[K]>
   }
 
-  // @todo Dispatch に互換性がない
-  // @ts-ignore
-  interface ExtendedStore extends Store<RootState> {
+  // Dispatch に互換性がない
+  interface ExtendedStore extends Omit<Store<RootState>, 'commit' | 'dispatch'> {
     getters: RootGetters
     commit: ExtendedCommit<RootMutations>
     dispatch: ExtendedDispatch<RootActions>
