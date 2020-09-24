@@ -21,6 +21,9 @@
       ],
       "@/*": [
         "./*"
+      ],
+      "typed-vuex": [
+        "./types/typed-vuex/index.d.ts"
       ]
     },
     "types": [

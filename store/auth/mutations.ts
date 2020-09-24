@@ -1,4 +1,4 @@
-import { Mutations } from 'vuex'
+import { Mutations } from 'typed-vuex'
 import { AuthState } from './state'
 
 export type AuthMutations = {

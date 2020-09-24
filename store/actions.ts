@@ -1,4 +1,4 @@
-import { Actions } from 'vuex'
+import { Actions } from 'typed-vuex'
 import { RootState } from './state'
 import { RootGetters } from './getters'
 import { RootMutations } from './mutations'

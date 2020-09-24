@@ -3,7 +3,7 @@ import {
   RootGetters,
   SFCCommit,
   SFCDispatch
-} from 'vuex'
+} from 'typed-vuex'
 
 declare module '@nuxt/types/app' {
   interface NuxtAppOptions {

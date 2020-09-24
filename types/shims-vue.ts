@@ -3,7 +3,7 @@ import {
   RootGetters,
   SFCCommit,
   SFCDispatch
-} from 'vuex'
+} from 'typed-vuex'
 
 declare module 'vue/types/vue' {
   interface Vue {

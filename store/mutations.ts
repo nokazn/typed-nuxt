@@ -1,4 +1,4 @@
-import { Mutations } from 'vuex'
+import { Mutations } from 'typed-vuex'
 import { RootState } from './state'
 
 export type RootMutations = {};
