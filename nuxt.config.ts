@@ -2,7 +2,7 @@ import colors from 'vuetify/es5/util/colors'
 import { NuxtConfig } from '@nuxt/types'
 
 const config: NuxtConfig = {
-  mode: 'universal',
+  ssr: true,
   head: {
     titleTemplate: '%s - ' + process.env.npm_package_name,
     title: process.env.npm_package_name || '',
@@ -64,7 +64,9 @@ const config: NuxtConfig = {
   },
   typescript: {
     typeCheck: {
-      eslint: true
+      eslint: {
+        files: './**/*.{ts,js,vue}'
+      }
     }
   },
   build: {
