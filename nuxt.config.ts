@@ -1,7 +1,7 @@
 import colors from 'vuetify/es5/util/colors'
-import { Configuration } from '@nuxt/types'
+import { NuxtConfig } from '@nuxt/types'
 
-const config: Configuration = {
+const config: NuxtConfig = {
   mode: 'universal',
   head: {
     titleTemplate: '%s - ' + process.env.npm_package_name,
